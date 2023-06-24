@@ -54,3 +54,6 @@ where d.id = e.department_id
   and e.gender = true
   and e.value > 5
 ');
+
+// 7. Open-Closed Principle
+include 'architecture/solid_o.php';
