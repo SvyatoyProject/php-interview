@@ -5,18 +5,18 @@ namespace App\Helpers;
 class ArrHelper
 {
     /**
-     * Уникальное значение по ключу многомерного массива
+     * Уникальность по ключу многомерного массива
      *
-     * @param array $data
+     * @param array $array
      * @param string $key
      * @return array
      */
-    public static function uniqueByKey(array $data, string $key): array
+    public static function uniqueByKey(array $array, string $key): array
     {
         $keys = [];
 
         return array_filter(
-            $data,
+            $array,
             function (array $item) use (&$keys, $key) {
                 $value = $item[$key];
 
