@@ -20,3 +20,6 @@ $controller = new Controller($arrService);
 
 $uniqueData = $controller->unique($array, 'id');
 var_dump($uniqueData);
+
+$sortData = $controller->sort($uniqueData, 'date', SORT_DESC);
+var_dump($sortData);

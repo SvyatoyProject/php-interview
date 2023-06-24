@@ -29,4 +29,20 @@ class ArrHelper
             }
         );
     }
+
+    /**
+     * Сортировка по ключу многомерного массива
+     *
+     * @param array $array
+     * @param string $key
+     * @param int $sort
+     * @return array
+     */
+    public static function sortBy(array $array, string $key, int $sort = SORT_ASC): array
+    {
+        $values = array_column($array, $key);
+        array_multisort($values, $sort, $array);
+
+        return $array;
+    }
 }
