@@ -18,4 +18,4 @@ cd public
 php index.php
 ```
 
-**Задачи перечислены в файле [index.php](public/index.php)**
+**Решения задач перечислены в файле [index.php](public/index.php)**
