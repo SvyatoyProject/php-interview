@@ -8,7 +8,7 @@ use App\Helpers\DateHelper;
 class ArrService
 {
     /**
-     * Уникальность по ключу многомерного массива
+     * 1. Уникальность по ключу многомерного массива
      *
      * @param array $array
      * @param string $key
@@ -20,7 +20,7 @@ class ArrService
     }
 
     /**
-     * Сортировка по ключу многомерного массива
+     * 2. Сортировка по ключу многомерного массива
      *
      * @param array $array
      * @param string $key
@@ -35,7 +35,9 @@ class ArrService
         if ($key === $dateKey) {
             $array = array_map(
                 function (array $item) use ($dateKey, $sortDateKey) {
-                    $item[$sortDateKey] = DateHelper::convertDateToTimestamp($item[$dateKey], '.') ?? $item[$dateKey];
+                    $dateValue = $item[$dateKey];
+                    $item[$sortDateKey] = DateHelper::convertDateToTimestamp($dateValue, '.') ?? $dateValue;
+
                     return $item;
                 },
                 $array
