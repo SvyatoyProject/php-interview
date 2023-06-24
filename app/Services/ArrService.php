@@ -8,7 +8,7 @@ use App\Helpers\DateHelper;
 class ArrService
 {
     /**
-     * Уникальный многомерный массив
+     * Уникальность по ключу многомерного массива
      *
      * @param array $array
      * @param string $key

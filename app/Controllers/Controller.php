@@ -15,7 +15,7 @@ class Controller
     }
 
     /**
-     * Уникальный многомерный массив
+     * Уникальность по ключу многомерного массива
      *
      * @param array $array
      * @param string $key
