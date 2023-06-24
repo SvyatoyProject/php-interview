@@ -40,4 +40,4 @@ $objects = [
 $soh = new SomeObjectsHandler();
 $result = $soh->handleObjects($objects);
 
-var_dump($result);
+return $result;

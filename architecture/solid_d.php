@@ -50,4 +50,4 @@ $result = [
     $http->post('/test2.html')
 ];
 
-var_dump($result);
+return $result;
