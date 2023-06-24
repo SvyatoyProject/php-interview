@@ -13,29 +13,26 @@ $array = [
     ['id' => 2, 'date' => '11.11.2020', 'name' => 'test4'],
     ['id' => 3, 'date' => '06.06.2020', 'name' => 'test3']
 ];
-var_dump($array);
+var_dump('Оригинальный массив', $array);
 
 $arrService = new ArrService();
 $controller = new Controller($arrService);
 
-// 1. Уникальность по ключу многомерного массива
 $uniqueArray = $controller->unique($array, 'id');
-var_dump($uniqueArray);
+var_dump('1. Уникальность по ключу многомерного массива', $uniqueArray);
 
-// 2. Сортировка по ключу многомерного массива
 $sortArray = $controller->sort($uniqueArray, 'date', SORT_DESC);
-var_dump($sortArray);
+var_dump('2. Сортировка по ключу многомерного массива', $sortArray);
 
-// 3. Отбор по значению многомерного массива
 $whereArray = $controller->where($array, 'id', 2);
-var_dump($whereArray);
+var_dump('3. Отбор по значению многомерного массива', $whereArray);
 
-// 4. Преобразование двух значений многомерного массива в ключ => значение
 $flipArray = $controller->twoValuesToKeyValue($uniqueArray, 'name', 'id');
-var_dump($flipArray);
+var_dump('4. Преобразование двух значений многомерного массива в ключ => значение', $flipArray);
 
-// 5. Запрос на вывод всех товаров, которые имеют все возможные теги
-var_dump('
+var_dump(
+    '5. Запрос на вывод всех товаров, которые имеют все возможные теги',
+    '
 select *
 from goods
 where id in (select goods_id
@@ -43,30 +40,35 @@ where id in (select goods_id
                   tags
              group by goods_id
              having sum(tag_id) = sum(id));
-');
+'
+);
 
-// 6. Запрос на вывод всех департаментов, в которых есть мужчины и поставлена оценка выше 5
-var_dump('
+var_dump(
+    '6. Запрос на вывод всех департаментов, в которых есть мужчины и поставлена оценка выше 5',
+    '
 select distinct d.id, d.name
 from departments as d,
      evaluations as e
 where d.id = e.department_id
   and e.gender = true
   and e.value > 5
-');
+'
+);
 
-// 7. Open-Closed Principle
-include 'architecture/solid_o.php';
+$result = include 'architecture/solid_o.php';
+var_dump('7. Open-Closed Principle', $result);
 
-// 8. Dependency Inversion Principle
-include 'architecture/solid_d.php';
+$result = include 'architecture/solid_d.php';
+var_dump('8. Dependency Inversion Principle', $result);
 
-// 9. Универсальный подход к получению токена из разных хранилищ
-var_dump('
+var_dump(
+    '9. Универсальный подход к получению токена из разных хранилищ',
+    '
 /** @var IDatabase $driverClass */
 $driverClass = config("database.driver")
 $driver = new $driverClass;
 
 $service = new Concept($driver);
 $result = $service->getUserData();
-');
+'
+);
