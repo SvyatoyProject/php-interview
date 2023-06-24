@@ -1,23 +1,31 @@
 <?php
 
-class SomeObject {
-    protected $name;
+namespace Architecture;
 
-    public function __construct(string $name) { }
-
-    public function getObjectName() { }
+class SomeObjectOne
+{
+    public function getHandleName(): string
+    {
+        return 'handle_object_1';
+    }
 }
 
-class SomeObjectsHandler {
-    public function __construct() { }
+class SomeObjectTwo
+{
+    public function getHandleName(): string
+    {
+        return 'handle_object_2';
+    }
+}
 
-    public function handleObjects(array $objects): array {
+class SomeObjectsHandler
+{
+    public function handleObjects(array $objects): array
+    {
         $handlers = [];
+
         foreach ($objects as $object) {
-            if ($object->getObjectName() == 'object_1')
-                $handlers[] = 'handle_object_1';
-            if ($object->getObjectName() == 'object_2')
-                $handlers[] = 'handle_object_2';
+            $handlers[] = $object->getHandleName();
         }
 
         return $handlers;
@@ -25,9 +33,11 @@ class SomeObjectsHandler {
 }
 
 $objects = [
-    new SomeObject('object_1'),
-    new SomeObject('object_2')
+    new SomeObjectOne(),
+    new SomeObjectTwo()
 ];
 
 $soh = new SomeObjectsHandler();
-$soh->handleObjects($objects);
+$result = $soh->handleObjects($objects);
+
+var_dump($result);
