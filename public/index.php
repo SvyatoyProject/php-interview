@@ -44,3 +44,13 @@ where id in (select goods_id
              group by goods_id
              having sum(tag_id) = sum(id));
 ');
+
+// 6. Запрос на вывод всех департаментов, в которых есть мужчины и поставлена оценка выше 5
+var_dump('
+select distinct d.id, d.name
+from departments as d,
+     evaluations as e
+where d.id = e.department_id
+  and e.gender = true
+  and e.value > 5
+');
