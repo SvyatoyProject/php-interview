@@ -45,4 +45,22 @@ class ArrHelper
 
         return $array;
     }
+
+    /**
+     * 3. Отбор по значению многомерного массива
+     *
+     * @param array $array
+     * @param string $key
+     * @param $value
+     * @return array
+     */
+    public static function whereBy(array $array, string $key, $value): array
+    {
+        return array_filter(
+            $array,
+            function (array $item) use ($key, $value) {
+                return $item[$key] == $value;
+            }
+        );
+    }
 }

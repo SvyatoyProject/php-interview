@@ -38,4 +38,17 @@ class Controller
     {
         return $this->service->sort($array, $key, $sort);
     }
+
+    /**
+     * 3. Отбор по значению многомерного массива
+     *
+     * @param array $array
+     * @param string $key
+     * @param $value
+     * @return array
+     */
+    public function where(array $array, string $key, $value): array
+    {
+        return $this->service->where($array, $key, $value);
+    }
 }

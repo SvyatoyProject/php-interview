@@ -57,4 +57,17 @@ class ArrService
 
         return $array;
     }
+
+    /**
+     * 3. Отбор по значению многомерного массива
+     *
+     * @param array $array
+     * @param string $key
+     * @param $value
+     * @return array
+     */
+    public function where(array $array, string $key, $value): array
+    {
+        return ArrHelper::whereBy($array, $key, $value);
+    }
 }

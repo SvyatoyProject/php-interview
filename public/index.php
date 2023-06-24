@@ -23,3 +23,6 @@ var_dump($uniqueData);
 
 $sortData = $controller->sort($uniqueData, 'date', SORT_DESC);
 var_dump($sortData);
+
+$whereArray = $controller->where($array, 'id', 2);
+var_dump($whereArray);
