@@ -33,3 +33,14 @@ var_dump($whereArray);
 // 4. Преобразование двух значений многомерного массива в ключ => значение
 $flipArray = $controller->twoValuesToKeyValue($uniqueArray, 'name', 'id');
 var_dump($flipArray);
+
+// 5. Запрос на вывод всех товаров, которые имеют все возможные теги
+var_dump('
+select *
+from goods
+where id in (select goods_id
+             from goods_tags,
+                  tags
+             group by goods_id
+             having sum(tag_id) = sum(id));
+');
