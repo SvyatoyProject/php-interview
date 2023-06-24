@@ -72,4 +72,17 @@ class ArrService
     {
         return ArrHelper::whereBy($array, $key, $value);
     }
+
+    /**
+     * 4. Преобразование двух значений многомерного массива в ключ => значение
+     *
+     * @param array $array
+     * @param string $key
+     * @param string $keyValue
+     * @return array
+     */
+    public function twoValuesToKeyValue(array $array, string $key, string $keyValue): array
+    {
+        return ArrHelper::twoValuesToKeyValue($array, $key, $keyValue);
+    }
 }

@@ -29,3 +29,7 @@ var_dump($sortArray);
 // 3. Отбор по значению многомерного массива
 $whereArray = $controller->where($array, 'id', 2);
 var_dump($whereArray);
+
+// 4. Преобразование двух значений многомерного массива в ключ => значение
+$flipArray = $controller->twoValuesToKeyValue($uniqueArray, 'name', 'id');
+var_dump($flipArray);
