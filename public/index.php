@@ -57,3 +57,6 @@ where d.id = e.department_id
 
 // 7. Open-Closed Principle
 include 'architecture/solid_o.php';
+
+// 8. Dependency Inversion Principle
+include 'architecture/solid_d.php';
