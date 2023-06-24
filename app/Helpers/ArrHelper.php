@@ -15,18 +15,20 @@ class ArrHelper
     {
         $keys = [];
 
-        return array_filter(
-            $array,
-            function (array $item) use (&$keys, $key) {
-                $value = $item[$key];
+        return array_values(
+            array_filter(
+                $array,
+                function (array $item) use (&$keys, $key) {
+                    $value = $item[$key];
 
-                if (in_array($value, $keys)) {
-                    return false;
+                    if (in_array($value, $keys)) {
+                        return false;
+                    }
+
+                    $keys[] = $item[$key];
+                    return true;
                 }
-
-                $keys[] = $item[$key];
-                return true;
-            }
+            )
         );
     }
 
@@ -61,6 +63,24 @@ class ArrHelper
             function (array $item) use ($key, $value) {
                 return $item[$key] == $value;
             }
+        );
+    }
+
+    /**
+     * Преобразование двух значений многомерного массива в ключ => значение
+     *
+     * @param array $array
+     * @param string $key
+     * @param string $keyValue
+     * @return array
+     */
+    public static function twoValuesToKeyValue(array $array, string $key, string $keyValue): array
+    {
+        return array_map(
+            function (array $item) use ($key, $keyValue) {
+                return [$item[$key] => $item[$keyValue]];
+            },
+            $array
         );
     }
 }
