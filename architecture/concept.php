@@ -1,18 +1,27 @@
 <?php
-class Concept {
-    private $client;
 
-    public function __construct() {
-        $this->client = new \GuzzleHttp\Client();
+use Architecture\DB\Interfaces\IDatabase;
+use GuzzleHttp\Client;
+
+class Concept
+{
+    private Client $client;
+    private IDatabase $database;
+
+    public function __construct(IDatabase $database)
+    {
+        $this->client = new Client();
+        $this->database = $database;
     }
 
-    public function getUserData() {
+    public function getUserData(): void
+    {
         $params = [
             'auth' => ['user', 'pass'],
-            'token' => $this->getSecretKey()
+            'token' => $this->database->getSecretKey()
         ];
 
-        $request = new \Request('GET', 'https://api.method', $params);
+        $request = new Request('GET', 'https://api.method', $params);
         $promise = $this->client->sendAsync($request)->then(function ($response) {
             $result = $response->getBody();
         });

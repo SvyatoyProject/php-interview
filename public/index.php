@@ -60,3 +60,13 @@ include 'architecture/solid_o.php';
 
 // 8. Dependency Inversion Principle
 include 'architecture/solid_d.php';
+
+// 9. Универсальный подход к получению токена из разных хранилищ
+var_dump('
+/** @var IDatabase $driverClass */
+$driverClass = config("database.driver")
+$driver = new $driverClass;
+
+$service = new Concept($driver);
+$result = $service->getUserData();
+');
