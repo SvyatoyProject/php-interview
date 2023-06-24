@@ -18,11 +18,14 @@ var_dump($array);
 $arrService = new ArrService();
 $controller = new Controller($arrService);
 
-$uniqueData = $controller->unique($array, 'id');
-var_dump($uniqueData);
+// 1. Уникальность по ключу многомерного массива
+$uniqueArray = $controller->unique($array, 'id');
+var_dump($uniqueArray);
 
-$sortData = $controller->sort($uniqueData, 'date', SORT_DESC);
-var_dump($sortData);
+// 2. Сортировка по ключу многомерного массива
+$sortArray = $controller->sort($uniqueArray, 'date', SORT_DESC);
+var_dump($sortArray);
 
+// 3. Отбор по значению многомерного массива
 $whereArray = $controller->where($array, 'id', 2);
 var_dump($whereArray);

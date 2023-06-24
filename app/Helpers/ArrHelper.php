@@ -5,7 +5,7 @@ namespace App\Helpers;
 class ArrHelper
 {
     /**
-     * Уникальность по ключу многомерного массива
+     * 1. Уникальность по ключу многомерного массива
      *
      * @param array $array
      * @param string $key
@@ -31,7 +31,7 @@ class ArrHelper
     }
 
     /**
-     * Сортировка по ключу многомерного массива
+     * 2. Сортировка по ключу многомерного массива
      *
      * @param array $array
      * @param string $key
