@@ -55,6 +55,17 @@ where d.id = e.department_id
 '
 );
 
+var_dump(
+    '6. Корректировка решения задачи, не правильно понял в первый раз',
+    '
+select department_id
+from evaluations
+where gender = true
+group by department_id
+having min(value) > 5
+'
+);
+
 $result = include 'architecture/solid_o.php';
 var_dump('7. Open-Closed Principle', $result);
 
